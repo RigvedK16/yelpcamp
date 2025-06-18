@@ -1,0 +1,27 @@
+<% layout('./layouts/boilerplate') %>
+    <!-- <div class="card col-md-6 offset-4" style="width: 25vw;">
+        <div class="card body alert" role="alert" style="height: 50%;">
+            <h4 class="alert-heading">Well done!</h4>
+            <p class="card-text">Aww yeah, you successfully read this important alert message. This example text is
+                going to run a bit
+                longer
+                so
+                that you can see how spacing within an alert works with this kind of content.</p>
+            <hr>
+            <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+        </div>
+    </div> -->
+
+    <div class="alert alert-danger col-md-6 offset-3 mt-3" role="alert">
+        <!-- <div class="container w-100 text-center">
+            <img src="https://cdn.pixabay.com/photo/2018/03/24/09/19/robot-3256109_1280.png" alt="image-fluid" style="height:auto;">
+        </div> -->
+        <h4 class="alert-heading">
+            <%=err.message %>
+        </h4>
+        <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit
+            longer
+            so that you can see how spacing within an alert works with this kind of content.</p>
+        <hr>
+        <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+    </div>

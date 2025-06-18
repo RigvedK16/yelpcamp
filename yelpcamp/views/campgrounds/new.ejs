@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate') %>
+    <h2 class="text-center mt-3 mb-3">Create a Campground</h1>
+        <form action="/campgrounds" method="POST" novalidate class="needs-validation">
+            <div class="col-md-6 offset-3">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="title" id="title" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="location" id="location" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label mb-3" for="price">Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="basic-addon1">₹</span>
+                        <input type="text" class="form-control" placeholder="00.0" aria-label="price"
+                            aria-describedby="basic-addon1" name="price" required>
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" required></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-warning">Add campground</button>
+                </div>
+            </div>
+        </form>
+
+        

@@ -1,8 +1,12 @@
 const mongoose = require('mongoose')
-
+const User = require('./user')
 const reviewSchema = new mongoose.Schema({
     body: String,
-    rating: Number
+    rating: Number,
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
 })
 
 const Review = mongoose.model('Review', reviewSchema)

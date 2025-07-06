@@ -1,21 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const User = require('../models/user')
+const user = require('../controllers/users')
 const catchAsyncErrors = require('../catchAsyncErrors')
+const { storeReturnTo } = require('../middleware')
+const passport = require('passport')
 
-router.get('/register', (req, res) => {
-    res.render('users/register');
-})
+router.route('/register')
+    .get(user.renderRegister)
+    .post(catchAsyncErrors(user.register))
 
-router.post('/register', catchAsyncErrors(async (req, res) => {
-    const { username, email, password } = req.body;
-    const user = new User({
-        username: username,
-        email: email
-    })
-    const registeredUser = await User.register(user, password)
-    res.redirect('/campgrounds')
+router.route('/login')
+    .get(user.renderLogin)
+    .post(storeReturnTo, passport.authenticate('local', { failureRedirect: '/login' }), user.login);
 
-}))
+router.get('/logout', user.logout);
 
 module.exports = router;

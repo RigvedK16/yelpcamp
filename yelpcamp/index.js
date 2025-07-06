@@ -28,6 +28,7 @@ const { Cookies } = require('nodemailer/lib/fetch')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.engine('ejs', ejsMate)
@@ -47,9 +48,14 @@ passport.use(new localStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-app.use('/',userRoutes)
+app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+})
+
+app.use('/', userRoutes)
 app.use('/campgrounds', campgroundRoutes)
-app.use('/campgrounds/:id/reviews',reviewRoutes)
+app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 app.all('*', (req, res, next) => {
     next(new AppError('Page not Found!', 404))
